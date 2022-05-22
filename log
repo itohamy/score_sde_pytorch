@@ -1,27 +1,39 @@
 WARNING:tensorflow:From /vilsrv-storage/dinari/miniconda3/envs/condirit/lib/python3.8/site-packages/tensorflow_gan/python/estimator/tpu_gan_estimator.py:42: The name tf.estimator.tpu.TPUEstimator is deprecated. Please use tf.compat.v1.estimator.tpu.TPUEstimator instead.
 
-Num of model parameters 2211073 
+Num of model parameters 2533473 
 
-Num of model parameters 2211073 
+Num of model parameters 2533473 
 
-W0522 12:01:00.345257 140564217898752 utils.py:10] No checkpoint found at output/checkpoints-meta/checkpoint.pth. Returned the same state as input
-I0522 12:01:00.359513 140564217898752 xla_bridge.py:260] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
-I0522 12:01:00.360022 140564217898752 xla_bridge.py:260] Unable to initialize backend 'gpu': NOT_FOUND: Could not find registered platform with name: "cuda". Available platform names are: Host Interpreter
-I0522 12:01:00.360695 140564217898752 xla_bridge.py:260] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
-W0522 12:01:00.360951 140564217898752 xla_bridge.py:265] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
-I0522 12:01:00.362754 140564217898752 dataset_info.py:361] Load dataset info from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
-W0522 12:01:00.366514 140564217898752 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
-W0522 12:01:00.366708 140564217898752 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
-I0522 12:01:00.366999 140564217898752 dataset_builder.py:282] Reusing dataset fashion_mnist (/home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1)
-I0522 12:01:00.367218 140564217898752 dataset_builder.py:477] Constructing tf.data.Dataset for split train, from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
-W0522 12:01:02.027193 140564217898752 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
-W0522 12:01:02.027405 140564217898752 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
-I0522 12:01:02.027613 140564217898752 dataset_builder.py:282] Reusing dataset fashion_mnist (/home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1)
-I0522 12:01:02.027762 140564217898752 dataset_builder.py:477] Constructing tf.data.Dataset for split test, from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
-I0522 12:01:02.181534 140564217898752 run_lib.py:133] Starting training loop at step 0.
+W0522 12:37:39.766090 140468864055040 utils.py:10] No checkpoint found at output/checkpoints-meta/checkpoint.pth. Returned the same state as input
+I0522 12:37:39.783320 140468864055040 xla_bridge.py:260] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
+I0522 12:37:39.783720 140468864055040 xla_bridge.py:260] Unable to initialize backend 'gpu': NOT_FOUND: Could not find registered platform with name: "cuda". Available platform names are: Host Interpreter
+I0522 12:37:39.784337 140468864055040 xla_bridge.py:260] Unable to initialize backend 'tpu': INVALID_ARGUMENT: TpuPlatform is not available.
+W0522 12:37:39.784551 140468864055040 xla_bridge.py:265] No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+I0522 12:37:39.787751 140468864055040 dataset_info.py:361] Load dataset info from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
+W0522 12:37:39.790706 140468864055040 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
+W0522 12:37:39.790875 140468864055040 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
+I0522 12:37:39.791148 140468864055040 dataset_builder.py:282] Reusing dataset fashion_mnist (/home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1)
+I0522 12:37:39.791321 140468864055040 dataset_builder.py:477] Constructing tf.data.Dataset for split train, from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
+W0522 12:37:41.408912 140468864055040 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
+W0522 12:37:41.409314 140468864055040 options.py:556] options.experimental_threading is deprecated. Use options.threading instead.
+I0522 12:37:41.409609 140468864055040 dataset_builder.py:282] Reusing dataset fashion_mnist (/home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1)
+I0522 12:37:41.409800 140468864055040 dataset_builder.py:477] Constructing tf.data.Dataset for split test, from /home/tohamy/tensorflow_datasets/fashion_mnist/3.0.1
+I0522 12:37:41.571826 140468864055040 run_lib.py:133] Starting training loop at step 0.
 
  Start training.
 
-I0522 12:01:05.369202 140564217898752 run_lib.py:152] step: 0, training_loss: 5.10157e+02
-I0522 12:01:05.811904 140564217898752 run_lib.py:165] step: 0, eval_loss: 5.09596e+02
-I0522 12:01:12.411604 140564217898752 run_lib.py:152] step: 50, training_loss: 5.11975e+02
+I0522 12:37:44.519703 140468864055040 run_lib.py:152] step: 0, training_loss: 5.11461e+02
+I0522 12:37:44.977789 140468864055040 run_lib.py:165] step: 0, eval_loss: 5.17151e+02
+I0522 12:37:52.903841 140468864055040 run_lib.py:152] step: 50, training_loss: 5.15242e+02
+I0522 12:38:00.504171 140468864055040 run_lib.py:152] step: 100, training_loss: 5.11510e+02
+I0522 12:38:00.570452 140468864055040 run_lib.py:165] step: 100, eval_loss: 5.04154e+02
+I0522 12:38:08.086197 140468864055040 run_lib.py:152] step: 150, training_loss: 4.91965e+02
+I0522 12:38:15.939746 140468864055040 run_lib.py:152] step: 200, training_loss: 4.86478e+02
+I0522 12:38:16.007363 140468864055040 run_lib.py:165] step: 200, eval_loss: 4.94830e+02
+I0522 12:38:23.477798 140468864055040 run_lib.py:152] step: 250, training_loss: 4.68895e+02
+I0522 12:38:31.282030 140468864055040 run_lib.py:152] step: 300, training_loss: 4.39733e+02
+I0522 12:38:31.355239 140468864055040 run_lib.py:165] step: 300, eval_loss: 4.44560e+02
+I0522 12:38:38.902404 140468864055040 run_lib.py:152] step: 350, training_loss: 4.11913e+02
+I0522 12:38:46.640831 140468864055040 run_lib.py:152] step: 400, training_loss: 3.69814e+02
+I0522 12:38:46.706165 140468864055040 run_lib.py:165] step: 400, eval_loss: 3.99416e+02
+I0522 12:38:54.294190 140468864055040 run_lib.py:152] step: 450, training_loss: 3.31693e+02
