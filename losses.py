@@ -113,9 +113,9 @@ def get_smld_loss_fn(vesde, train, reduce_mean=False):
     model_fn = mutils.get_model_fn(model, train=train)
     labels = torch.randint(0, vesde.N, (batch.shape[0],), device=batch.device)
     sigmas = smld_sigma_array.to(batch.device)[labels]
-    noise = torch.randn_like(batch) * sigmas[:, None, None, None]
+    noise = torch.randn_like(batch) * sigmas[:, None, None, None]  # same as batch size, where in row i there is noise using some sigma that will be added to data point in row i.
     perturbed_data = noise + batch
-    score = model_fn(perturbed_data, labels)
+    score = model_fn(perturbed_data, labels)  # What is the shape here?? why need labels?
     target = -noise / (sigmas ** 2)[:, None, None, None]
     losses = torch.square(score - target)
     losses = reduce_op(losses.reshape(losses.shape[0], -1), dim=-1) * sigmas ** 2

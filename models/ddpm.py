@@ -128,6 +128,8 @@ class DDPM(nn.Module):
       # Input is in [0, 1]
       h = 2 * x - 1.
 
+    h = h.float()
+
     # Downsampling block
     hs = [modules[m_idx](h)]
     m_idx += 1

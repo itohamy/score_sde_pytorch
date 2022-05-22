@@ -398,7 +398,8 @@ def get_pc_sampler(sde, shape, predictor, corrector, inverse_scaler, snr,
     with torch.no_grad():
       # Initial sample
       x = sde.prior_sampling(shape).to(device)
-      timesteps = torch.linspace(sde.T, eps, sde.N, device=device)
+      timesteps = torch.linspace(sde.T, eps, sde.N, device=device)  # create evenly-spaced values from sde.T (the end time of SDE) to eps. The numbers are in decreasing order.
+      # the values in timespace are the sigmas (or t) that we are using when reversing the SDE at each step. There are sde.N steps.
 
       for i in range(sde.N):
         t = timesteps[i]

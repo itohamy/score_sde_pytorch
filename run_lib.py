@@ -40,6 +40,9 @@ import torch
 from torch.utils import tensorboard
 from torchvision.utils import make_grid, save_image
 from utils import save_checkpoint, restore_checkpoint
+from torchsummary import summary
+import torch.nn as nn
+
 
 FLAGS = flags.FLAGS
 
@@ -63,6 +66,12 @@ def train(config, workdir):
 
   # Initialize model.
   score_model = mutils.create_model(config)
+
+  #summary(score_model, (3, 32, 32))
+  #print(score_model)
+
+  print('Num of model parameters', sum(p.numel() for p in score_model.parameters() if p.requires_grad), '\n')
+
   ema = ExponentialMovingAverage(score_model.parameters(), decay=config.model.ema_rate)
   optimizer = losses.get_optimizer(config, score_model.parameters())
   state = dict(optimizer=optimizer, model=score_model, ema=ema, step=0)
@@ -73,6 +82,7 @@ def train(config, workdir):
   checkpoint_meta_dir = os.path.join(workdir, "checkpoints-meta", "checkpoint.pth")
   tf.io.gfile.makedirs(checkpoint_dir)
   tf.io.gfile.makedirs(os.path.dirname(checkpoint_meta_dir))
+  
   # Resume training when intermediate checkpoints are detected
   state = restore_checkpoint(checkpoint_meta_dir, state, config.device)
   initial_step = int(state['step'])
@@ -122,13 +132,22 @@ def train(config, workdir):
   # In case there are multiple hosts (e.g., TPU pods), only log to host 0
   logging.info("Starting training loop at step %d." % (initial_step,))
 
+  # ------ START THE TRAINING ----------
+  print("\n Start training.\n")
+  # ------------------------------------
+
   for step in range(initial_step, num_train_steps + 1):
+    #print(torch.cuda.memory_summary(device=None, abbreviated=False))
+    torch.cuda.memory_summary(device=None, abbreviated=False)
+
     # Convert data to JAX arrays and normalize them. Use ._numpy() to avoid copy.
     batch = torch.from_numpy(next(train_iter)['image']._numpy()).to(config.device).float()
     batch = batch.permute(0, 3, 1, 2)
     batch = scaler(batch)
+
     # Execute one training step
     loss = train_step_fn(state, batch)
+    
     if step % config.training.log_freq == 0:
       logging.info("step: %d, training_loss: %.5e" % (step, loss.item()))
       writer.add_scalar("training_loss", loss, step)

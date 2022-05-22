@@ -22,11 +22,13 @@ from ml_collections.config_flags import config_flags
 import logging
 import os
 import tensorflow as tf
+import torch
+
+torch.cuda.empty_cache()
 
 FLAGS = flags.FLAGS
 
-config_flags.DEFINE_config_file(
-  "config", None, "Training configuration.", lock_config=True)
+config_flags.DEFINE_config_file("config", None, "Training configuration.", lock_config=True)
 flags.DEFINE_string("workdir", None, "Work directory.")
 flags.DEFINE_enum("mode", None, ["train", "eval"], "Running mode: train or eval")
 flags.DEFINE_string("eval_folder", "eval",
