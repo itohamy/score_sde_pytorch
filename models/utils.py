@@ -89,9 +89,7 @@ def create_model(config):
   """Create the score model."""
   model_name = config.model.name
   score_model = get_model(model_name)(config)
-  print('Num of model parameters', sum(p.numel() for p in score_model.parameters() if p.requires_grad), '\n')
-  #score_model = score_model.to(config.device)
-  score_model = torch.nn.DataParallel(score_model)
+  #score_model = torch.nn.DataParallel(score_model)
   score_model = score_model.to(config.device)
   return score_model
 
